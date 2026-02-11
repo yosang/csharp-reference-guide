@@ -1,3 +1,17 @@
+# C# Notes and Reference Guide
+- [About](#about)
+- [Compiler](#compiler)
+  - [Top-level statements and Main](#top-level-statements-and-main)
+- [Syntax](#syntax)
+  - [Types](#types)
+    - [Conversion](#conversion)
+    - [Value vs Reference](#value-vs-reference)
+    - [var keyword](#var-keyword)
+    - [target-typed new expressions](#target-typed-new-expressions)
+  - [Strings](#strings)
+  - [Arrays](#arrays)
+    - [Indices and Ranges](#indices-and-ranges)
+
 # About
 This repo will serve as personal notes and quick reference guide for stuff that I pick up as I learn C#.
 
