@@ -15,7 +15,7 @@
 # About
 This repo will serve as personal notes and quick reference guide for stuff that I pick up as I learn C#.
 
-Goes nicely with [c-sharp-katas](https://github.com/yosang/c-sharp-katas) repo.
+Goes nicely with [c-sharp-katas](https://github.com/yosang/c-sharp-katas) repo, for some hands-on problem solving with C#.
 
 Its not meant to be a C# learn the basics, theres course material for that...
 
