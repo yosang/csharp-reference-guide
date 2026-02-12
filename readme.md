@@ -85,6 +85,16 @@ Its not meant to be a C# learn the basics, theres course material for that...
 - We can search with strings using indexes `str[2]`, for access only, we cant mutate a string.
     - indexOf and lastIndex of are useful, they take a `char` type.
 - Every method of a string (because its immutable) returns a new string, leaving the original one untouched.
+- To be able to mutate strings we have to access the individual `char` values.
+    - [StringBuilder](https://learn.microsoft.com/en-us/dotnet/api/system.text.stringbuilder?view=net-10.0) creates a buffer of char values that can be converted to strings with the `ToString()` method.
+    - StringBuilder has some nice methods we can use
+        - `Append` - Adds a char at the end of the buffer, it accepts among the following types `char`, `string`, `int`, `double`, `bool`, `char[]`...
+        - `Insert` - Inserts a char at a specific index
+        -  `Replace` - Replaces a char
+        - `ToString` - Converts the entire buffer to a string.
+        - `ToString(int startIndex, int length)` to get a substring
+        - `Remove(int startIndex, int length)` — deletes characters
+        - `Clear()` - Clears everything from the buffer.
 
 ## Arrays
 - We can declare arrays with fixed sizes, or implicitly `char[] vowels = new char[] { 'a', 'e', 'i', 'o', 'u' }`, shorthand version: `char[] vowels = { 'a', 'e', 'i', 'o', 'u' }`
