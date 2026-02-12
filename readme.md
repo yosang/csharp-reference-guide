@@ -11,6 +11,12 @@
   - [Strings](#strings)
   - [Arrays](#arrays)
     - [Indices and Ranges](#indices-and-ranges)
+  - [Modifiers](#modifiers)
+    - [Parameter modifiers](#parameter-modifiers)
+  - [Null](#null)
+  - [Switch](#switch)
+  - [namespaces](#namespaces)
+    - [visibility/access modifiers](#visibilityaccess-modifiers)
 
 # About
 This repo will serve as personal notes and quick reference guide for stuff that I pick up as I learn C#.
@@ -104,3 +110,104 @@ Its not meant to be a C# learn the basics, theres course material for that...
 - We can combine both indices and ranges aswell
     - `int[] sliced = myArr[^2..^1];` - Gets 4 - starting from -2 upto and not inclusive -1
 
+## Modifiers
+
+### Parameter modifiers
+- To refresh my memory, **parameters** define the set of **arguments** that has to be provided when calling a method.
+    - `fo(8)` - 8 is an arguments
+    - `static void foo(int p) {...}` - p is a parameter 
+- In C#, we can control how parameters are passed with `ref`, `in`, `out` and `params`.
+    - `ref` - Passes an argument by reference, the default is that arguments are passed by value (a new variable copy is created).
+    - The `ref` keyword is both required when calling and declaring the method. 
+        ```c#
+        int x = 10;
+        
+        // Here x is passed to f by value
+        Foo(x);
+        void Foo(int p) => p++; // p is 11, but x is still 10, because p is a copy
+        
+        // Here x is passed to foo by reference
+        FooRef(ref x);
+        void FooRef(ref int p) => p++; // x is now 11
+
+        ```
+    - `out` - Works just like ref, but it doesnt need to be assigned before going into the function. However it must be assigned before it comes `out` the function.
+        - `int.TryParse("123", out int y);` - We now have a variable y that is of int type and can be used.
+    - `in` - Works just like ref, but its readonly, it prevents the reference to be mutated from within a method.
+        ```c#
+        // Here x is used, but it cannot be modified
+        Bar(x);
+        void Bar(in int p)
+        {
+            // p++; // Wont work, throws an error
+            WriteLine(p); 
+        }
+        ```
+    - `params` - Allows any number of parameters to be passed
+        ```c#
+        FooBar(x, y);
+
+        void FooBar(params int[] p)
+        {
+            foreach (int num in p)
+            {
+                WriteLine(num);
+                // 10
+                // 123
+            }
+        }
+        ```
+## Null
+- `??` - **Null coalescing** - says, if the operand to the left is not null, give it to me, otherwise use the right operand.
+- `??=` - **Null assignment** - says, if the operand to the left is null, assign the operand to the right to the left.
+- `?.` - **Null conditional** - says, if the property we are trying to access is null, return null and dont throw any errors
+
+## Switch
+- classic switch
+    ```c#
+        int cityNumber = 1; // Stan
+        string cityName = cityNumber switch
+        {
+            0 => "Stavanger",
+            1 => "Bergen",
+            _ => "Oslo"
+        };
+
+        System.Console.WriteLine(cityName); // Bergen
+        System.Console.WriteLine(giveMeACity(0)); // Stavanger
+
+
+        string giveMeACity(int c)
+        {
+            switch (c)
+            {
+                case 0:
+                    return "Stavanger";
+                    break;
+                case 1:
+                    return "Bergen";
+                    break;
+                default:
+                    return "Oslo";
+                    break;
+            }
+        }
+        ;
+    ```
+- switch expressions
+    ```c#
+    int cityNumber = 1; // Stan
+    string cityName = cityNumber switch
+    {
+        0 => "Stavanger",
+        1 => "Bergen",
+        _ => "Oslo"
+    };
+
+    System.Console.WriteLine(cityName); // Bergen
+    ```
+## namespaces
+...
+
+### visibility/access modifiers
+...
